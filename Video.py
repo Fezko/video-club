@@ -4,6 +4,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.filters.command import Command
 from aiogram.types import ContentType
 from aiogram.types import Video
+
 import moviepy.editor as mpy
 from aiogram.types import FSInputFile
 
@@ -16,6 +17,7 @@ async def cmd_start(message: types.Message):
 
 @dp.message(F.content_type==ContentType.VIDEO)
 async def video_id(message):
+    await message.answer("Пожалуйста подождите😉")
     file_id = message.video.file_id  # Get file id
     file = await bot.get_file(file_id)  # Get file path
     await bot.download_file(file.file_path, "video.mp4")
